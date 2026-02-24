@@ -7,3 +7,6 @@ Die Basis der IP-basierten Kommunikation, die vor allem im zivilen Sektor zahlre
 
 ## IMP / Interface Message Processor
 Der Interface Message Processor (IMP) war der Knotenpunkt für Paketvermittlung, der zur Verbindung von Teilnehmernetzwerken mit dem ARPANET von den späten 1960er Jahren bis 1989 verwendet wurde. Er war quasi der erste Router.
+
+## ARP
+Mit dem ARP-Protokoll kann ein Host die MAC-Adresse eines anderen Hosts herausfindee. Dies ist notwendig, um anschliessend per IPv4 kommunizieren zu können. 
