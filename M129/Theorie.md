@@ -9,4 +9,4 @@ Die Basis der IP-basierten Kommunikation, die vor allem im zivilen Sektor zahlre
 Der Interface Message Processor (IMP) war der Knotenpunkt für Paketvermittlung, der zur Verbindung von Teilnehmernetzwerken mit dem ARPANET von den späten 1960er Jahren bis 1989 verwendet wurde. Er war quasi der erste Router.
 
 ## ARP
-Mit dem ARP-Protokoll kann ein Host die MAC-Adresse eines anderen Hosts herausfindee. Dies ist notwendig, um anschliessend per IPv4 kommunizieren zu können. 
+Mit dem ARP-Protokoll kann ein Host die MAC-Adresse eines anderen Hosts herausfinden. Dies ist notwendig, um anschliessend per IPv4 kommunizieren zu können. Es wird über den Broadcast von Host A die Nachricht abgesetzt, dass man erfahren möchte, wer eine spezifische IP-Adresse hat. Der Host B, derjenige mit dieser IP-Adresse, antwortet mit seiner MAC-Adresse. Host A, welcher die Anfrage gesendet hat, erstellt bei sich einen Eintrag mit der Kombination von IP-Adresse und MAC-Adresse. Nun kann er mit Host B über IPv4 kommunzieren.
