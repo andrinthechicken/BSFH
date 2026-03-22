@@ -45,10 +45,10 @@ Wie beim Server 1, kommt auch hier die Applikation Veeam zum Einsatz. Es wird zu
 ## Konfiguration Server 3 (Bestellungen / Aufträge)
 
 ### Backup-Art
-
+Das Backup des Servers 3 wird on-premise durchgeführt. Dies, da ein schneller Zugriff auf die Bestellungen und Aufträge stehts möglich sein muss und die Daten möglichst in Kontrolle der Firma sein sollen. Die Daten werden regelmässig auf das NAS gespielt und dort 25 Wochen lang gespeichert. Anschliessend werden die Daten auf Tape (LTO) geschrieben und aufbewahrt.
 
 ### Datenmenge
-
+Zum Zeitpunkt des Go Live wird mit einer ungefähren Datenmenge von 6.3 TB gerechnet. Es wird ein Zuwachs von 10% pro Jahr erwartet. Die maximale Speicheranforderung an das NAS durch die Korrespondenzaten liegt nach 5 Jahren bei ungefähr 40 TB. Wie es zu dieser Zahl kommt, ist unter "Backupschema" dargelegt.
 
 ### Backupschema
 Es wird hier in Zyklen gespeichert. In der ersten Woche eines Zyklus wird am Montag um 02:00 ein Full Backup gemacht. In den darauf folgenden 4 Wochen wird am Montag um 02:00 Uhr jeweils ein inkrementelles Backup gemacht. Nach diesem Zyklus (5 Wochen) beginnt der nächste. Dies ebenfalls mit einem Full Backup. Jegliche, in diesem Abschnitt beschriebenen, Backups werden auf dem NAS gespeichert. Es bleiben jeweils die letzten 5 Zyklen auf dem NAS bestehen. Sobald der 6. Zyklus beginnt, wird der erste gelöscht. Dieser Prozess wird für die weiteren Zyklen so weitergeführt. Damit sind auf dem NAS jeweils die letzten 25 Wochen gespeichert. Zusätzlich werden die Daten regelmässig auf LTO geshrieben und extern an einem vor höheren Mächten geschützten Ort aufbewahrt. Alle 25 Wochen, also exakt 5 Zyklen, werden die gesamten Daten auf dem NAS auf Tape (LTO) gespielt. Diese Bänder werden über einen, durch den Kunden noch zu definierenden, Zeitraum aufbewahrt.
