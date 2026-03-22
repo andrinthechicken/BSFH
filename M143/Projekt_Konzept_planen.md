@@ -6,7 +6,7 @@ https://gitlab.com/ch-tbz-it/Stud/m143/-/blob/main/02-Datensicherungskonzept/03-
 
 Alle diese Angaben sind auf einen Betrieb von 5 Jahren ausgelegt. Eine Verlängerung des Betriebes ist aufgrund der verwendeten Infrastruktur jedoch problemlos möglich.
 
-*Server 1 detailierter*
+
 ## Konfiguration Server 1 (MA-Daten)
 
 ### Backup-Art
@@ -27,19 +27,19 @@ Als Backupsoftware wird Veeam verwendet werden. Die Kosten für einen Betrieb ü
 ## Konfiguration Server 2 (Administration)
 
 ### Backup-Art
-
+Da es sich bei den Korrespondenzdatem um mitunter geschäftsrelevate Daten handelt, wird das Backup vor Ort durchgeführt. Die Daten werden regelmässig auf das NAS gespielt und für 10 Wochen aufbewahrt. Es gilt hier zu erwähnen, dass zur vollständigen IT-Landschaft wohl noch entsprechende Sicherungsmöglichkeiten von Korrespondenzen gehören werden. Diese werden hier jedoch nicht weiter dargelegt und sind nicht Teil dieses Projektes.
 
 ### Datenmenge
-
+Zum Zeitpunkt des Go Live wird mit einer ungefähren Datenmenge von 5.5 TB gerechnet. Es wird ein Zuwachs von 5-10% pro Jahr erwartet. Aufgrund der gross ausgelegten Infrstruktur würde auch ein Ausbruch der Datenmenge von 20% kein Problem darstellen. Die maximale Speicheranforderung an das NAS durch die Korrespondenzaten liegt nach 5 Jahren bei ungefähr 80 TB. Wie es zu dieser Zahl kommt, ist unter "Backupschema" dargelegt.
 
 ### Backupschema
-
+Das Backup wird jeden Samstag durch die Applikation Veeam um 05:00 Uhr durchgeführt. Veeam spielt das Backup auf das NAS, welches RAID 6 verwendet. Der maximale Speicherverbrauch eines einzigen Backups beträgt demnach, nach 5 Jahren, 8 TB. Es werden die Backups der letzten 10 Wochen aufbewahrt. Sobald diese 10 Wochen abgelaufen sind, wird das Backup der Woche 1 gelöscht. Nach der Woche 11 wird das Backup der Woche 2 gelöscht. Dieser Vorgang wird stehts weitergeführt. Dadurch sind nie mehr als 10 Backups und damit 80 TB  Belastung für das NAS vorhanden.
 
 ### Infrastruktur
 Der Server 2 nutzt die gleiche Infrastruktur wie der Server 1. Jedoch wird LTO nicht verwendet, da dies für diese Backup Variante nicht benötigt wird. Es wird also nebst dem Server 2 nur das NAS verwendet, um das oben beschriebene Backup durchzuführen.
 
 ### Backupsoftware
-Wie beim Server 1, kommt auch hier die Applikation Veeam zum Einsatz. Es wird zum Speichern des Backups auf das NAS verwendet.
+Wie beim Server 1, kommt auch hier die Applikation Veeam zum Einsatz. Es wird zum Speichern des Backups auf das NAS verwendet. Ein Backup auf LTO ist, wie oben erwähnt, nicht nötig.
 
 ## Konfiguration Server 3 (Bestellungen / Aufträge)
 
