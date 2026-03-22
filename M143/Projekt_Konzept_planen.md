@@ -33,7 +33,7 @@ Da es sich bei den Korrespondenzdatem um mitunter geschäftsrelevate Daten hande
 Zum Zeitpunkt des Go Live wird mit einer ungefähren Datenmenge von 5.5 TB gerechnet. Es wird ein Zuwachs von 5-10% pro Jahr erwartet. Aufgrund der gross ausgelegten Infrstruktur würde auch ein Ausbruch der Datenmenge von 20% kein Problem darstellen. Die maximale Speicheranforderung an das NAS durch die Korrespondenzaten liegt nach 5 Jahren bei ungefähr 80 TB. Wie es zu dieser Zahl kommt, ist unter "Backupschema" dargelegt.
 
 ### Backupschema
-Das Backup wird jeden Samstag durch die Applikation Veeam um 05:00 Uhr durchgeführt. Veeam spielt das Backup auf das NAS, welches RAID 6 verwendet. Der maximale Speicherverbrauch eines einzigen Backups beträgt demnach, nach 5 Jahren, 8 TB. Es werden die Backups der letzten 10 Wochen aufbewahrt. Sobald diese 10 Wochen abgelaufen sind, wird das Backup der Woche 1 gelöscht. Nach der Woche 11 wird das Backup der Woche 2 gelöscht. Dieser Vorgang wird stehts weitergeführt. Dadurch sind nie mehr als 10 Backups und damit 80 TB  Belastung für das NAS vorhanden.
+Das Backup wird jeden Samstag durch die Applikation Veeam um 05:00 Uhr durchgeführt. Veeam spielt das Backup auf das NAS, welches RAID 6 verwendet. Der maximale Speicherverbrauch eines einzigen Backups beträgt demnach, nach 5 Jahren, 8 TB. Es werden die Backups der letzten 10 Wochen aufbewahrt. Sobald diese 10 Wochen abgelaufen sind, wird das Backup der Woche 1 gelöscht. Nach der Woche 11 wird das Backup der Woche 2 gelöscht. Dieser Vorgang wird stehts weitergeführt. Dadurch sind nie mehr als 10 Backups und damit 80 TB  Belastung für das NAS vorhanden. Mithilfe dieses Schemas kann ein zuverlässliches aber nicht alzu teurer Backup zur Verfügung gestellt werden.
 
 ### Infrastruktur
 Der Server 2 nutzt die gleiche Infrastruktur wie der Server 1. Jedoch wird LTO nicht verwendet, da dies für diese Backup Variante nicht benötigt wird. Es wird also nebst dem Server 2 nur das NAS verwendet, um das oben beschriebene Backup durchzuführen.
@@ -51,13 +51,13 @@ Das Backup des Servers 3 wird on-premise durchgeführt. Dies, da ein schneller Z
 Zum Zeitpunkt des Go Live wird mit einer ungefähren Datenmenge von 6.3 TB gerechnet. Es wird ein Zuwachs von 10% pro Jahr erwartet. Die maximale Speicheranforderung an das NAS durch die Korrespondenzaten liegt nach 5 Jahren bei ungefähr 40 TB. Wie es zu dieser Zahl kommt, ist unter "Backupschema" dargelegt.
 
 ### Backupschema
-Es wird hier in Zyklen gespeichert. In der ersten Woche eines Zyklus wird am Montag um 02:00 ein Full Backup gemacht. In den darauf folgenden 4 Wochen wird am Montag um 02:00 Uhr jeweils ein inkrementelles Backup gemacht. Nach diesem Zyklus (5 Wochen) beginnt der nächste. Dies ebenfalls mit einem Full Backup. Jegliche, in diesem Abschnitt beschriebenen, Backups werden auf dem NAS gespeichert. Es bleiben jeweils die letzten 5 Zyklen auf dem NAS bestehen. Sobald der 6. Zyklus beginnt, wird der erste gelöscht. Dieser Prozess wird für die weiteren Zyklen so weitergeführt. Damit sind auf dem NAS jeweils die letzten 25 Wochen gespeichert. Zusätzlich werden die Daten regelmässig auf LTO geshrieben und extern an einem vor höheren Mächten geschützten Ort aufbewahrt. Alle 25 Wochen, also exakt 5 Zyklen, werden die gesamten Daten auf dem NAS auf Tape (LTO) gespielt. Diese Bänder werden über einen, durch den Kunden noch zu definierenden, Zeitraum aufbewahrt.
+Es wird hier in Zyklen gespeichert. In der ersten Woche eines Zyklus wird am Montag um 02:00 ein Full Backup gemacht. In den darauf folgenden 4 Wochen wird am Montag um 02:00 Uhr jeweils ein inkrementelles Backup gemacht. Nach diesem Zyklus (5 Wochen) beginnt der nächste. Dies ebenfalls mit einem Full Backup. Jegliche, in diesem Abschnitt beschriebenen, Backups werden auf dem NAS gespeichert. Es bleiben jeweils die letzten 5 Zyklen auf dem NAS bestehen. Sobald der 6. Zyklus beginnt, wird der erste gelöscht. Dieser Prozess wird für die weiteren Zyklen so weitergeführt. Damit sind auf dem NAS jeweils die letzten 25 Wochen gespeichert. Zusätzlich werden die Daten regelmässig auf LTO geshrieben und extern an einem vor höheren Mächten geschützten Ort aufbewahrt. Alle 25 Wochen, also exakt 5 Zyklen, werden die gesamten Daten auf dem NAS auf Tape (LTO) gespielt. Diese Bänder werden über einen, durch den Kunden noch zu definierenden, Zeitraum aufbewahrt. Mithilfe dieses Schemas sind die Daten über eine lange Zeit auf dem NAS und können somit schnell wiederhergestellt werden. Gleichzeitig können jedoch auch zu viele Daten auf dem NAS und auf Tape verhindert werden.
 
 ### Infrastruktur
-
+Der Server 3 nutzt die gleiche Infrastruktur wie der Server 1.
 
 ### Backupsoftware
-
-## Legende
+Wie bei den Servern 1 und 2, kommt auch hier die Applikation Veeam zum Einsatz. Es wird zum Speichern des Backups auf das NAS und zum schreiben der Daten auf Tape (LTO) verwendet. 
 
 ### Reflexion
+Dieses Konzept hat für mich eine Herausforderung im Bereich Logik dargestellt. Ich musste mein Konzept mehrmals umbauen, um keinen Speicherplatz zu verschwenden und eine passende Infrastruktur zu finden. Doch ich konnte sie gut meistern. Ich denke, dass dieses Konzept relativ gut gelungen ist. Ich habe vieles gelernt. Ganz im Stile von learning by doing. Ich werde daraus viel in die kommenden Projekte mitnehmen können.
