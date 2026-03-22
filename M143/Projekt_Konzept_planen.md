@@ -59,5 +59,5 @@ Der Server 3 nutzt die gleiche Infrastruktur wie der Server 1.
 ### Backupsoftware
 Wie bei den Servern 1 und 2, kommt auch hier die Applikation Veeam zum Einsatz. Es wird zum Speichern des Backups auf das NAS und zum schreiben der Daten auf Tape (LTO) verwendet. 
 
-### Reflexion
+## Reflexion
 Dieses Konzept hat für mich eine Herausforderung im Bereich Logik dargestellt. Ich musste mein Konzept mehrmals umbauen, um keinen Speicherplatz zu verschwenden und eine passende Infrastruktur zu finden. Doch ich konnte sie gut meistern. Ich denke, dass dieses Konzept relativ gut gelungen ist. Ich habe vieles gelernt. Ganz im Stile von learning by doing. Ich werde daraus viel in die kommenden Projekte mitnehmen können.
