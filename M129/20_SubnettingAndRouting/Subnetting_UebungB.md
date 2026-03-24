@@ -11,6 +11,6 @@ LAN3: 2000 Geräte
  
 *Bestimmen Sie die Netzadressen und Subnetzmasken der 3 neuen Netze*
 
-10.1.0.0/10
-10.2.0.0/10
-10.3.0.0/10
+8000 Netz
+Netzmaske   255.255.224.0
+Netzadresse 10.0.0.1/19
