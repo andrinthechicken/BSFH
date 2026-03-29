@@ -53,3 +53,62 @@ Broadcast: 192.168.6.255     11000000.10101000.00000110. 11111111
 
 ### Schritt 7: Anzahl möglicher Hosts bestimmen: 2^(32-CIDR) -2 = Anzahl Hosts
 2^(32-24) - 2 = 254
+
+## Hostmaximum in einem Subnetz berechnen
+Wieviele Hosts in ein Netz passen kann mit der folgenden Formel berechnet werden:
+Hosts = **2^(Host-Bits) - 2**  
+Die Minus zwei entsteht durch den Broadcast und die Netzadresse.
+
+### Auflistung möglicher Hosts bei den entsprechenden Netzmaske
+
+CIDR	Subnetzmaske	Host-Bits	Nutzbare Hostscc
+/10	    255.192.0.0	    22	        4,194,302  
+/11	    255.224.0.0	    21	        2,097,150  
+/12	    255.240.0.0	    20	        1,048,574  
+/13	    255.248.0.0	    19	        524,286  
+/14	    255.252.0.0	    18	        262,142  
+/15	    255.254.0.0	    17	        131,070  
+/16	    255.255.0.0	    16	        65,534  
+/17	    255.255.128.0	15	        32,766  
+/18	    255.255.192.0	14	        16,382  
+/19	    255.255.224.0	13	        8,190  
+/20	    255.255.240.0	12	        4,094  
+/21	    255.255.248.0	11	        2,046  
+/22	    255.255.252.0	10	        1,022  
+/23	    255.255.254.0	9	        510  
+/24	    255.255.255.0	8	        254  
+/25	    255.255.255.128	7	        126  
+/26	    255.255.255.192	6	        62  
+/27	    255.255.255.224	5	        30  
+/28	    255.255.255.240	4	        14  
+/29	    255.255.255.248	3	        6  
+/30	    255.255.255.252	2	        2  
+/31	    255.255.255.254	1	        0*  
+/32	    255.255.255.255	0	        1  
+
+## Mögliche Subnetz bei zusätzlichen Bits in der Subnetzmaske
+**Anzahl Subnetze = 2^(zusätzliche Bits)**
+
+Beispiel: /3 = 8 mögliche Subnetze  
+000  
+001  
+010  
+011  
+100  
+101  
+110  
+111  
+
+## Bandbreite
+![Beispiel](image.png)
+
+Bandbreiten können anhand der maximalen Leistung einer Leitung und der Anzahl PCs die diese "Strecke" benutzen wollen, berechnet werden.  
+
+In dem oben zu sehenden Beispiel, kann ein PC von C die maximale Geschwindigkeit von 100 BTX benutzen, wenn er SRV 2 erreichen will. Ein PC von B ist nicht so eingeschränkt und kann eine maximale Geschwindigkeit von 1000 BTX nutzen.
+Wenn nun alle PCs von B mit dem SRV 2 kommunizieren und einer von C, muss die Geschwindigkeit von Switch 5 zu SRV 2 aufgeteilt werden.   
+
+Es werden also 1000 BTX durch 5 PCs geteilt.Dies ergibt für jeden PC 200 BTX. Dies trifft jedoch nur für die PCs von B zu, da sie ein maximum von 1000 BTX haben. Das Gerät von C hat jedoch das Limit von 100 BTX und kann deshalb nur eine Leistung von 100 BTX nutzen, obwohl im 200 zuständen.
+
+1000 BTX : 5 = 200 BTX/PC
+PCs von B = 200 BTX
+PC von C = 100 BTX --- Er ist durch seine Verbindung zum Switch 2 limitiert.
