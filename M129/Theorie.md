@@ -59,6 +59,11 @@ Wieviele Hosts in ein Netz passen kann mit der folgenden Formel berechnet werden
 Hosts = **2^(Host-Bits) - 2**  
 Die Minus zwei entsteht durch den Broadcast und die Netzadresse.
 
+**Beim Subnetting sollen stehts nur so viele Adressen freigegeben werden wie nötig**  
+
+Beispiel:  
+![Subnetting](image-1.png)
+
 ### Auflistung möglicher Hosts bei den entsprechenden Netzmaske
 
 CIDR	Subnetzmaske	Host-Bits	Nutzbare Hostscc
@@ -107,8 +112,31 @@ Bandbreiten können anhand der maximalen Leistung einer Leitung und der Anzahl P
 In dem oben zu sehenden Beispiel, kann ein PC von C die maximale Geschwindigkeit von 100 BTX benutzen, wenn er SRV 2 erreichen will. Ein PC von B ist nicht so eingeschränkt und kann eine maximale Geschwindigkeit von 1000 BTX nutzen.
 Wenn nun alle PCs von B mit dem SRV 2 kommunizieren und einer von C, muss die Geschwindigkeit von Switch 5 zu SRV 2 aufgeteilt werden.   
 
-Es werden also 1000 BTX durch 5 PCs geteilt.Dies ergibt für jeden PC 200 BTX. Dies trifft jedoch nur für die PCs von B zu, da sie ein maximum von 1000 BTX haben. Das Gerät von C hat jedoch das Limit von 100 BTX und kann deshalb nur eine Leistung von 100 BTX nutzen, obwohl im 200 zuständen.
+Es werden also 1000 BTX durch 5 PCs geteilt. Dies ergibt für jeden PC 200 BTX. Dies trifft jedoch nur für die PCs von B zu, da sie ein maximum von 1000 BTX haben. Das Gerät von C hat jedoch das Limit von 100 BTX und kann deshalb nur eine Leistung von 100 BTX nutzen, obwohl im 200 zuständen.
 
-1000 BTX : 5 = 200 BTX/PC
-PCs von B = 200 BTX
+1000 BTX : 5 = 200 BTX/PC  
+PCs von B = 200 BTX  
 PC von C = 100 BTX --- Er ist durch seine Verbindung zum Switch 2 limitiert.
+
+## Switch und Routingtabellen
+
+Es folgen die Regeln für die jeweiligen Tabellen  
+
+### Für die Switchtabelle
+
+Eintragen:  
+jede MAC-Adresse  
+auf dem Port, an dem das Gerät angeschlossen ist  
+
+Switches kennen keine Routen.
+
+### Für die Routertabelle  
+
+Eintragen:  
+direkt angeschlossene Netze  
+entfernte Netze mit Next Hop  
+
+Router kennen Netze, nicht jeden einzelnen PC als separaten Eintrag.  
+
+Beispiel:
+
