@@ -130,13 +130,3 @@ auf dem Port, an dem das Gerät angeschlossen ist
 
 Switches kennen keine Routen.
 
-### Für die Routertabelle  
-
-Eintragen:  
-direkt angeschlossene Netze  
-entfernte Netze mit Next Hop  
-
-Router kennen Netze, nicht jeden einzelnen PC als separaten Eintrag.  
-
-Beispiel:
-
