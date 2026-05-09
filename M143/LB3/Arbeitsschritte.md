@@ -1,6 +1,6 @@
 # Arbeitsschritte
 
-## 08.05.2026
+
 Problem mit GitHub
 Problem konnte durch erneutes ANmelden gelöst werden
 erstellen eines testbackups mit duplicati
@@ -18,3 +18,4 @@ VM startet nicht korrekt -> troubleshooting
 VM musste aus VM Workstation Player entfert und neu hinzugefügt werden
 Download von Duplicati auf VM
 Erster test hat nicht funktioniert, da Kopieren von Laptop auf VM nicht richtig funktioniert. Gewisse Zeichen werden geändert.
+Troubleshooting VM, da diese stockt
