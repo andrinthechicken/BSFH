@@ -19,3 +19,6 @@ VM musste aus VM Workstation Player entfert und neu hinzugefügt werden
 Download von Duplicati auf VM
 Erster test hat nicht funktioniert, da Kopieren von Laptop auf VM nicht richtig funktioniert. Gewisse Zeichen werden geändert.
 Troubleshooting VM, da diese stockt
+Problem da eine ähnlich benannte datei bereits im Backup vorhanden war -> neuen Ordner in Cloud Storage erstellt
+erfolgreiches Backup von Testdatei auf vm
+erstellen einer 5GB grossen datei per cmd-befehl
