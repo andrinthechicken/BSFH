@@ -21,13 +21,25 @@ Der Status bedeutet 301 bedeutet, dass die angefragte Seite dauerhaft umgezogen 
 HTTP steht für HyperText Transfer Protocol. HTTPS steht für HyperText Transfer Protocol Secure. Dies da ein Zertifikat, welches von einer vertrauenswürdigen Quelle ausgegeben wurde, bestätigt, dass es sich um ein legitime Seite handelt. Da es in der heutigen Zeit sehr wichtig ist, vertrauenswürdig zu sein, sind solche Zertifikat beinahe Pflicht. Ausnahmen bilden jedoch etwa FW, da dort eh nur Personen zugreifen, die (hoffentlich) wissen was sie tun.
 
 *Erkläre den TLS Handshake: Warum wird zuerst asymmetrische und danach symmetrische Verschlüsselung verwendet?*
-
+So kann sichergestellt werden, dass die Schlüssel zur symetrischen Verschlüsselung sicher übertragen werden.
 
 *Was ist Split-DNS und in welcher Situation macht es Sinn?*
-
+Split-DNS bedeutet, dass der DNS anderst aufgelöst wird, je nachdem von wo die Anfrage kommt. So gibt es eine interne IP-Adresse und eine externe IP-Adresse.
 
 *Du hast einen internen Server mit der Domain server.local. Kann dieser ein gültiges Let's Encrypt Zertifikat erhalten? Begründe deine*
 *Antwort und erkläre eine mögliche Alternative.*
-
+Nein, server.local funktioniert nicht, da nicht verifiziert werden kann, ob dir die jeweilige Domäne auch wirklich gehört und das Zertifikat damit korrekt ist. Als Alternative könnte ein privates Zertifikat verwendet werden, da dieses etwa intern gültig sein kann.
 
 *Was sind GLUE Records und warum sind sie notwendig?*
+Zuir Erklärung zuerst ein Problem welches ohne GLUE Records auftreten würde:
+Problem ohne Glue:
+
+Ein Resolver will www.example.com auflösen.
+Die .com-Zone sagt: „Frag ns1.example.com.“
+Um ns1.example.com zu finden, muss der Resolver aber bereits example.com auflösen.
+Dafür müsste er wiederum ns1.example.com fragen.
+
+Das ist ein zirkuläres Abhängigkeitsproblem.
+*Dieses Beispiel wurde mit ChatGPT erstellt*
+
+Daher muss GLUE Records verwendet werden. Diese geben einem die IP-Adresse des jeweiligen DNS-Servers mit, sodass keine Schleife entsteht.
